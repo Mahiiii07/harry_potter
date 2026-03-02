@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 export default function BookDetails() {
   const path = useParams();
   const [book, setBook] = useState([]);
-  console.log(path.index);
 
   const fetchBookDetails = async () => {
     try {
@@ -24,8 +23,13 @@ export default function BookDetails() {
   }, []);
 
   return (
-    <div>
-      <h1>Name : {book.title}</h1> <h3>Realease date : {book.releaseDate}</h3>
-    </div>
+    <main className="max-w-7xl mx-auto py-20 px-6 lg:px-8">
+      <img src={book.cover} alt="image" className="h-44 w-44" />
+      <h1>Title : {book.title}</h1>
+      <h2>Original Title : {book.originalTitle}</h2>
+      <h3>Realease date : {book.releaseDate}</h3>
+      <p>Description : {book.description}</p>
+      <p>Pages : {book.pages}</p>
+    </main>
   );
 }

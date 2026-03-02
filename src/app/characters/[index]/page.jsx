@@ -4,8 +4,7 @@ import { useEffect, useState } from "react";
 
 export default function CharacterDetails() {
   const path = useParams();
-  const [charater, setCharacter] = useState([]);
-  console.log(path.index);
+  const [character, setCharacter] = useState([]);
 
   const fetchCharacterDetails = async () => {
     try {
@@ -24,9 +23,16 @@ export default function CharacterDetails() {
   }, []);
 
   return (
-    <div>
-      <h1>Character : {charater.fullName}</h1>{" "}
-      <h3>Nickname : {charater.nickname}</h3>
-    </div>
+    <main className="max-w-7xl mx-auto py-20 px-6 lg:px-8">
+      <img src={character.image} alt="image" className="h-44 w-44" />
+      <h1>Character : {character.fullName}</h1>{" "}
+      <h3>Nickname : {character.nickname}</h3>
+      <p>Hogwart's House : {character.hogwartsHouse} </p>
+      <p>Interpreted By : {character.interpretedBy} </p>
+      {character.children && (
+        <div> Children : {character.children?.join(",")} </div>
+      )}
+      <p>Birth Date : {character.birthdate} </p>
+    </main>
   );
 }

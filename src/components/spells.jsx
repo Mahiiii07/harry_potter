@@ -24,12 +24,23 @@ export default function Spells({ initialSpells, totalPages }) {
       <div className="card-grid">
         {spells?.map((spell, i) => {
           return (
-            <div key={i} className="card min-h-40">
-              <h1 className="card-title">{spell.spell}</h1>
-              <p className="text-gray-600 mb-1">
-                <span className="font-medium">Use:</span> {spell.use}
-              </p>
-              <Link href={`/spells/${spell.index}`}>Details</Link>
+            <div
+              key={i}
+              className="card min-h-40 flex flex-col justify-between"
+            >
+              <div>
+                <h1 className="card-title">{spell.spell}</h1>
+                <p className="text-gray-600 mb-8">
+                  <span className="font-medium">Use:</span> {spell.use}
+                </p>
+              </div>
+
+              <Link
+                href={`/spells/${spell.index}`}
+                className="bg-purple-700 rounded-xl p-2 text-center w-full "
+              >
+                Details
+              </Link>
             </div>
           );
         })}

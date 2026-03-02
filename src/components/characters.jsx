@@ -24,13 +24,21 @@ export default function Characters({ initialCharacters, totalPages }) {
       <div className="card-grid">
         {characters?.map((character, i) => {
           return (
-            <div key={i} className="card min-h-40">
+            <div
+              key={i}
+              className="card min-h-40 flex flex-col justify-between"
+            >
               <h1 className="card-title">{character.fullName}</h1>
-              <p className="text-gray-600 mb-1">
+              <p className="text-gray-600 mb-8">
                 <span className="font-medium">Nickname:</span>{" "}
                 {character.nickname}
               </p>
-              <Link href={`/characters/${character.index}`}>Details</Link>
+              <Link
+                href={`/characters/${character.index}`}
+                className="bg-purple-700 rounded-xl p-2 text-center w-full mt-auto"
+              >
+                Details
+              </Link>
             </div>
           );
         })}

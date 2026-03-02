@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 export default function SpellDetails() {
   const path = useParams();
   const [spell, setSpell] = useState([]);
-  console.log(path.index);
 
   const fetchSpellDetails = async () => {
     try {
@@ -24,8 +23,8 @@ export default function SpellDetails() {
   }, []);
 
   return (
-    <div>
+    <main className="max-w-7xl mx-auto py-20 px-6 lg:px-8">
       <h1>Spell : {spell.spell}</h1> <h3>Use : {spell.use}</h3>
-    </div>
+    </main>
   );
 }

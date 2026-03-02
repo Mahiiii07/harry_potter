@@ -27,7 +27,7 @@ export default function Pagination({ onPageChange, totalPages }) {
       <button
         disabled={currentPage === 1}
         onClick={handlePrevPage}
-        className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
+        className="px-2 py-1 bg-gray-200 rounded disabled:opacity-50 cursor-pointer"
       >
         Previous
       </button>
@@ -36,12 +36,12 @@ export default function Pagination({ onPageChange, totalPages }) {
       </span>
       <button
         onClick={handleNextPage}
-        className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
+        className="px-2 py-1 bg-gray-200 rounded disabled:opacity-50 cursor-pointer"
         disabled={currentPage === totalPages}
       >
         Next
       </button>
-      <div className="px-4 py-2">Total pages : {totalPages}</div>
+      <div className="px-2 py-1">Total pages : {totalPages}</div>
     </div>
   );
 }
