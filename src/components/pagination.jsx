@@ -23,7 +23,7 @@ export default function Pagination({ onPageChange, totalPages }) {
   }, [currentPage]);
 
   return (
-    <div className="flex gap-4 mt-10 ">
+    <div className="flex gap-4 mt-10 lg:mt-0 lg:bottom-32 lg:fixed">
       <button
         disabled={currentPage === 1}
         onClick={handlePrevPage}

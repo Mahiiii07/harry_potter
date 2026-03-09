@@ -28,7 +28,7 @@ export default function Books({ initialBooks, totalPages }) {
               key={i}
               className="card min-h-40 flex flex-col justify-betweens"
             >
-              <h1 className="card-title">{book.title}</h1>
+              <h1 className="card-title truncate">{book.title}</h1>
               <p className="text-gray-600 mb-8">
                 <span className="font-medium">Release Date:</span>{" "}
                 {book.releaseDate}
