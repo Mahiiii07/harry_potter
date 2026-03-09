@@ -33,7 +33,6 @@ export default async function Page({ searchParams }) {
       <Houses
         initialHouses={await initialHouses()}
         totalPages={await totalPages()}
-        currentPage={parseInt(currentPage)}
       />
     </main>
   );

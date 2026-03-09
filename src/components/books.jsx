@@ -35,7 +35,7 @@ export default function Books({ initialBooks, totalPages }) {
               </p>
               <Link
                 href={`/books/${book.index}`}
-                className="bg-purple-700 rounded-xl p-2 text-center w-full mt-auto"
+                className="bg-blue-500 rounded-xl p-2 text-center w-full mt-auto"
               >
                 Details
               </Link>

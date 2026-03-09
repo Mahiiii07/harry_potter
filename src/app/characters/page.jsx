@@ -28,12 +28,11 @@ export default async function Page({ searchParams }) {
   };
 
   return (
-    <main className="max-w-7xl mx-auto py-20 px-6 lg:px-8">
+    <main className="max-w-7xl mx-auto py-20 px-6 lg:px-8 ">
       <h1 className="title">Characters</h1>
       <Characters
         initialCharacters={await initialCharacters()}
         totalPages={await totalPages()}
-        currentPage={parseInt(currentPage)}
       />
     </main>
   );

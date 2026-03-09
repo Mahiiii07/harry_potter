@@ -24,7 +24,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           <Link
             href="/"
-            className="text-xl md:text-2xl font-bold  hover:text-purple-700 transition-colors duration-300"
+            className="text-xl md:text-2xl font-bold  hover:text-blue-500 transition-colors duration-300"
           >
             Wizarding World
           </Link>
@@ -35,7 +35,7 @@ const Navbar = () => {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="px-3 py-2 rounded-md text-sm font-medium hover:text-purple-700 transition-colors duration-300"
+                  className="px-3 py-2 rounded-md text-sm font-medium hover:text-blue-500 transition-colors duration-300"
                 >
                   {link.label}
                 </Link>

@@ -1,11 +1,5 @@
 @import "tailwindcss";
 
-:root {
-}
-
-@theme inline {
-}
-
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -23,5 +17,5 @@ body {
 }
 
 .card-title {
-  @apply text-xl font-semibold mb-2 text-purple-700;
+  @apply text-xl font-semibold mb-2 text-blue-500;
 }

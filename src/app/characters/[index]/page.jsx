@@ -26,11 +26,13 @@ export default function CharacterDetails() {
     <main className="max-w-7xl mx-auto py-20 px-6 lg:px-8">
       <img src={character.image} alt="image" className="h-44 w-44" />
       <h1>Character : {character.fullName}</h1>{" "}
-      <h3>Nickname : {character.nickname}</h3>
+      <h2>Nickname : {character.nickname}</h2>
       <p>Hogwart's House : {character.hogwartsHouse} </p>
       <p>Interpreted By : {character.interpretedBy} </p>
-      {character.children && (
-        <div> Children : {character.children?.join(",")} </div>
+      {character.children?.join(",") ? (
+        <p> Children : {character.children?.join(",")} </p>
+      ) : (
+        <p> Children : No Child</p>
       )}
       <p>Birth Date : {character.birthdate} </p>
     </main>
