@@ -1,9 +1,11 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 
-export default function Search({ placeholder, onSearch }) {
-  const [searchTerm, setSearchTerm] = useState("");
+export default function Search({ placeholder, initialSearchTerm = "" }) {
+  const [searchTerm, setSearchTerm] = useState(initialSearchTerm);
+  const router = useRouter();
   const isFirstRender = useRef(true);
 
   useEffect(() => {
@@ -13,29 +15,33 @@ export default function Search({ placeholder, onSearch }) {
     }
 
     const timer = setTimeout(() => {
-      if (searchTerm.trim() === "") {
-        onSearch("");
+      const trimmed = searchTerm.trim();
+      if (trimmed === "") {
+        router.push("?page=1");
       } else {
-        onSearch(searchTerm);
+        router.push(`?page=1&search=${encodeURIComponent(trimmed)}`);
       }
     }, 500);
 
     return () => clearTimeout(timer);
-  }, [searchTerm]);
+  }, [searchTerm, router]);
 
   const handleOnChange = (e) => {
     setSearchTerm(e.target.value);
   };
 
-  const handleOnClick = () => {
-    if (searchTerm) {
-      onSearch(searchTerm);
+  const executeSearch = () => {
+    const trimmed = searchTerm.trim();
+    if (trimmed === "") {
+      router.push("?page=1");
+    } else {
+      router.push(`?page=1&search=${encodeURIComponent(trimmed)}`);
     }
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter" && searchTerm) {
-      onSearch(searchTerm);
+    if (e.key === "Enter") {
+      executeSearch();
     }
   };
 
@@ -51,7 +57,7 @@ export default function Search({ placeholder, onSearch }) {
         autoFocus
       />
       <button
-        onClick={handleOnClick}
+        onClick={executeSearch}
         className="bg-blue-500 text-white px-3 py-1 rounded cursor-pointer hover:bg-blue-600"
       >
         Search

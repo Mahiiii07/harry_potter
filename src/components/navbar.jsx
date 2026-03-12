@@ -8,10 +8,10 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { href: "/books", label: "Books" },
-    { href: "/characters", label: "Characters" },
-    { href: "/houses", label: "Houses" },
-    { href: "/spells", label: "Spells" },
+    { href: "/books?page=1", label: "Books" },
+    { href: "/characters?page=1", label: "Characters" },
+    { href: "/houses?page=1", label: "Houses" },
+    { href: "/spells?page=1", label: "Spells" },
   ];
 
   const toggleMenu = () => {

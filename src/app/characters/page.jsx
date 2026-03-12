@@ -1,26 +1,43 @@
 import Characters from "@/components/characters";
 
 export default async function Page({ searchParams }) {
-  const currentPage = (await searchParams).page;
-  const totalPages = async () => {
+  const params = await searchParams;
+  const currentPage = parseInt(params.page) || 1;
+  const searchTerm = params.search || "";
+
+  const fetchData = async () => {
     try {
-      const response = await fetch(
-        "https://potterapi-fedeperin.vercel.app/en/characters",
-      );
+      const url = searchTerm
+        ? `https://potterapi-fedeperin.vercel.app/en/characters?search=${searchTerm}`
+        : "https://potterapi-fedeperin.vercel.app/en/characters";
+
+      const response = await fetch(url);
       const data = await response.json();
-      const endIndex = currentPage * 8;
-      const startIndex = endIndex - 8;
-      return [Math.ceil(data.length / 8), data.slice(startIndex, endIndex)];
+
+      const totalPages = Math.ceil(data?.length / 8) || 1;
+      const startIndex = (currentPage - 1) * 8;
+      const endIndex = startIndex + 8;
+
+      return {
+        totalPages,
+        characters: data.slice(startIndex, endIndex),
+      };
     } catch (error) {
-      console.log(error);
+      console.log("Error fetching characters:", error);
+      return { totalPages: 1, characters: [] };
     }
   };
 
-  const data = await totalPages();
+  const { totalPages, characters } = await fetchData();
 
   return (
     <>
-      <Characters initialCharacters={data[1]} initialTotalPages={data[0]} />
+      <Characters
+        characters={characters}
+        totalPages={totalPages}
+        currentPage={currentPage}
+        searchTerm={searchTerm}
+      />
     </>
   );
 }
