@@ -20,7 +20,7 @@ export default async function Page({ searchParams }) {
 
   return (
     <>
-      <Characters initialCharacters={data[1]} totalPages={data[0]} />
+      <Characters initialCharacters={data[1]} initialTotalPages={data[0]} />
     </>
   );
 }

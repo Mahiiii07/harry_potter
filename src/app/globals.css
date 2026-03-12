@@ -19,3 +19,7 @@ body {
 .card-title {
   @apply text-xl font-semibold mb-2 text-blue-500;
 }
+
+.pagination-button {
+  @apply flex items-center justify-center rounded px-3 cursor-pointer;
+}

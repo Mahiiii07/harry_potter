@@ -20,9 +20,8 @@ export default async function Page({ searchParams }) {
   const data = await totalPages();
 
   return (
-    <main className="max-w-7xl mx-auto py-20 px-6 lg:px-8">
-      <h1 className="title">Books</h1>
-      <Books initialBooks={data[1]} totalPages={data[0]} />
-    </main>
+    <>
+      <Books initialBooks={data[1]} initialTotalPages={data[0]} />;
+    </>
   );
 }
