@@ -6,7 +6,7 @@ export default function Pagination({ totalPages, currentPage, searchTerm }) {
 
   const createPageUrl = (pageNumber) => {
     if (searchTerm) {
-      return `?page=${pageNumber}&search=${encodeURIComponent(searchTerm)}`;
+      return `?page=${pageNumber}&search=${searchTerm}`;
     }
     return `?page=${pageNumber}`;
   };
@@ -36,7 +36,7 @@ export default function Pagination({ totalPages, currentPage, searchTerm }) {
       >
         Previous
       </button>
-      
+
       <button
         onClick={() => goToPage(1)}
         className={`flex items-center justify-center rounded px-3 cursor-pointer hover:bg-gray-200 ${currentPage === 1 || currentPage - 1 === 1 ? "hidden" : ""}`}

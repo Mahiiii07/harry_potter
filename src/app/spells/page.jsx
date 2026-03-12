@@ -13,13 +13,11 @@ export default async function Page({ searchParams }) {
 
       const response = await fetch(url);
       const data = await response.json();
-
-      const totalPages = Math.ceil(data?.length / 8) || 1;
       const startIndex = (currentPage - 1) * 8;
       const endIndex = startIndex + 8;
 
       return {
-        totalPages,
+        totalPages: Math.ceil(data?.length / 8) || 1,
         spells: data.slice(startIndex, endIndex),
       };
     } catch (error) {

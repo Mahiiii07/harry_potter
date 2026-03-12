@@ -6,11 +6,11 @@ import { useRouter } from "next/navigation";
 export default function Search({ placeholder, initialSearchTerm = "" }) {
   const [searchTerm, setSearchTerm] = useState(initialSearchTerm);
   const router = useRouter();
-  const isFirstRender = useRef(true);
+  const [isFirstRender, setIsFirstRender] = useState(true);
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
+    if (isFirstRender) {
+      setIsFirstRender(false);
       return;
     }
 
@@ -19,7 +19,7 @@ export default function Search({ placeholder, initialSearchTerm = "" }) {
       if (trimmed === "") {
         router.push("?page=1");
       } else {
-        router.push(`?page=1&search=${encodeURIComponent(trimmed)}`);
+        router.push(`?page=1&search=${trimmed}`);
       }
     }, 500);
 
@@ -35,7 +35,7 @@ export default function Search({ placeholder, initialSearchTerm = "" }) {
     if (trimmed === "") {
       router.push("?page=1");
     } else {
-      router.push(`?page=1&search=${encodeURIComponent(trimmed)}`);
+      router.push(`?page=1&search=${trimmed}`);
     }
   };
 
